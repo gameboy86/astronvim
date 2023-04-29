@@ -11,13 +11,25 @@ return {
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(
+          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
+        )
       end,
       desc = "Pick to close",
     },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
     ["<leader>b"] = { name = "Buffers" },
+    ["<space>"] = { "za", desc = "Folding" },
+    ["<leader><space>"] = { ":noh<CR>", desc = "Clear Selected" },
+    ["oo"] = { "o<ESC>", desc = "Insert new line bottom" },
+    ["OO"] = { "O<ESC>", desc = "Insert new line above" },
+    ["ss"] = { "i<space><ESC>", desc = "Insert space" },
+    ["a<CR>"] = { "i<CR><ESC>" },
+    ["<leader>h"] = { ":<C-u>split<CR>" },
+    ["<leader>v"] = { ":<C-u>vsplit<CR>" },
+    ["<S-l>"] = { ":bnext<CR>" },
+    ["<S-h>"] = { ":bprevious<CR>" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
   },
