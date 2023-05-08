@@ -22,6 +22,7 @@ return {
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "prettier",
         "stylua",
+        "jq",
       })
     end,
   },
@@ -33,6 +34,7 @@ return {
       if not opts.ensure_installed then opts.ensure_installed = {} end
       require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "python",
+        "delve",
       })
     end,
   },

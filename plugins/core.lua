@@ -20,6 +20,55 @@ return {
       return opts
     end,
   },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = function(plugin, opts)
+      require "plugins.configs.nvim-dap-ui"(plugin, opts)
+      local n = require "dapui"
+      n.setup({
+        floating = { border = "rounded" },
+        layouts = {
+          {
+            elements = {
+              {
+                id = "scopes",
+                size = 0.25,
+              },
+              "breakpoints",
+              "stacks",
+              "watches",
+            },
+            size = 0.35,
+            position = "right",
+          },
+          {
+            elements = {
+              "repl",
+              "console",
+            },
+            size = 0.25,
+            position = "bottom",
+          },
+        },
+      })
+    end,
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    config = function(plugin, opts)
+      require "plugins.configs.neo-tree"(plugin, opts) -- include the default astronvim config that calls the setup call
+      -- add more custom luasnip configuration such as filetype extend or custom snippets
+      local events = require "neo-tree.events"
+      events.subscribe({
+        event="file_opened",
+        handler = function(file_path)
+          --auto close
+          require("neo-tree").close_all()
+        end,
+      })
+    end,
+  },
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --
