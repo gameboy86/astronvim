@@ -53,18 +53,35 @@ return {
       })
     end,
   },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   opts = {
+  --     event_handlers = {
+  --     {
+  --       event = "file_opened",
+  --       handler = function(file_path)
+  --         --auto close
+  --         require("neo-tree").close_all()
+  --       end,
+  --     },
+  --     }
+  --   }
+  -- },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require "cmp"
+      opts.mapping["<Tab>"] = nil
+      opts.mapping["<S-Tab>"] = nil
+      opts.mapping["<CR>"] = cmp.mapping.confirm({select=true})
+      return opts
+    end,
+  },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      event_handlers = {
-      {
-        event = "file_opened",
-        handler = function(file_path)
-          --auto close
-          require("neo-tree").close_all()
-        end,
-      },
-      }
-    }
+    opts = function(_, opts)
+      opts.window["width"] = 40
+      return opts
+    end,
   },
 }

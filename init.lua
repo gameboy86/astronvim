@@ -20,10 +20,22 @@ return {
   colorscheme = "nightfox",
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
-    virtual_text = true,
+    virtual_text = false,
     underline = true,
   },
   lsp = {
+    setup_handlers = {
+      -- add custom handler
+      clangd = function(_, opts) require("clangd_extensions").setup { server = opts } end
+    },
+    config = {
+      clangd = {
+        capabilities = {
+          offsetEncoding = "utf-8",
+        },
+      },
+    },
+
     -- customize lsp formatting options
     formatting = {
       -- control auto formatting on save
@@ -33,6 +45,7 @@ return {
           "go",
           -- "python",
           "proto",
+          "c",
         },
         ignore_filetypes = { -- disable format on save for specified filetypes
           -- "python",
@@ -50,8 +63,10 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
+      -- "gopls"
     },
   },
+
   -- Configure require("lazy").setup() options
   lazy = {
     defaults = { lazy = true },
