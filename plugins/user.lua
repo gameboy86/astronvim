@@ -88,5 +88,9 @@ return {
       }
       return opts
     end,
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
   }
 }
