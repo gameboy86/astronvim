@@ -92,5 +92,9 @@ return {
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
-  }
+  },
+  {
+    "sindrets/diffview.nvim",
+    lazy = false,
+  },
 }
