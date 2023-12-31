@@ -83,7 +83,7 @@ return {
       })
 
       opts.autoresize = {
-        enable = true,
+        enable = false,
         width = 80,
       }
       return opts
@@ -97,4 +97,8 @@ return {
     "sindrets/diffview.nvim",
     lazy = false,
   },
+  {
+    "github/copilot.vim",
+    lazy = false,
+  }
 }
